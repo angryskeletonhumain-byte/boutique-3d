@@ -1,20 +1,470 @@
- <div class="prix">
-                10 $
-            </div>
+ <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <a class="acheter" href="#">
-                Acheter
-            </a>
+    <title>3D Studio - Modèles 3D</title>
 
-        </div>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
+            color: white;
+        }
+
+        /* BARRE DU HAUT */
+
+        header {
+            background: #111827;
+            border-bottom: 1px solid #263044;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        /* ACCUEIL */
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                radial-gradient(circle at center, #18233b 0%, #0b0f19 60%);
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #4f8cff;
+        }
+
+        .hero p {
+            color: #aeb8ca;
+            font-size: 20px;
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .bouton {
+            display: inline-block;
+            margin-top: 30px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .bouton:hover {
+            background: #3b82f6;
+        }
+
+        /* BOUTIQUE */
+
+        .boutique {
+            padding: 80px 7%;
+        }
+
+        .titre {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .titre h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .titre p {
+            color: #9ca3af;
+        }
+
+        .produits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* CARTE PRODUIT */
+
+        .produit {
+            background: #111827;
+            border: 1px solid #263044;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .produit:hover {
+            transform: translateY(-8px);
+            border-color: #3b82f6;
+        }
+
+        .image-produit {
+            height: 220px;
+            background: linear-gradient(135deg, #1f2937, #374151);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        .contenu {
+            padding: 22px;
+        }
+
+        .contenu h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .contenu p {
+            color: #9ca3af;
+            line-height: 1.5;
+            min-height: 45px;
+        }
+
+        .bas-produit {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .prix {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .acheter {
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+        }
+
+        .acheter:hover {
+            background: #3b82f6;
+        }
+
+        /* SECTION INFO */
+
+        .info {
+            background: #111827;
+            padding: 70px 7%;
+            text-align: center;
+        }
+
+        .info h2 {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .info p {
+            max-width: 700px;
+            margin: auto;
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+
+        /* PIED DE PAGE */
+
+        footer {
+            background: #070a11;
+            border-top: 1px solid #263044;
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        /* TELEPHONE */
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<header>
+
+    <div class="logo">
+        🧊 3D Studio
+    </div>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#boutique">Boutique</a>
+        <a href="#apropos">À propos</a>
+    </nav>
+
+</header>
+
+
+<!-- ACCUEIL -->
+
+<section class="hero" id="accueil">
+
+    <div>
+
+        <h1>
+            Tes modèles <span>3D</span>.
+        </h1>
+
+        <p>
+            Découvre une collection de modèles 3D
+            créés pour les jeux, l'impression 3D
+            et tes projets créatifs.
+        </p>
+
+        <a href="#boutique" class="bouton">
+            Voir la boutique
+        </a>
 
     </div>
 
 </section>
 
+
+<!-- BOUTIQUE -->
+
+<section class="boutique" id="boutique">
+
+    <div class="titre">
+
+        <h2>🛒 Boutique</h2>
+
+        <p>
+            Découvre mes modèles 3D.
+        </p>
+
+    </div>
+
+
+    <div class="produits">
+
+
+        <!-- PRODUIT 1 -->
+
+        <div class="produit">
+
+            <div class="image-produit">
+                🤖
+            </div>
+
+            <div class="contenu">
+
+                <h3>Robot futuriste</h3>
+
+                <p>
+                    Modèle 3D futuriste
+                    prêt pour tes projets.
+                </p>
+
+                <div class="bas-produit">
+
+                    <div class="prix">
+                        5 $
+                    </div>
+
+                    <a href="#" class="acheter">
+                        Acheter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUIT 2 -->
+
+        <div class="produit">
+
+            <div class="image-produit">
+                🐉
+            </div>
+
+            <div class="contenu">
+
+                <h3>Dragon</h3>
+
+                <p>
+                    Créature fantastique
+                    en modèle 3D.
+                </p>
+
+                <div class="bas-produit">
+
+                    <div class="prix">
+                        8 $
+                    </div>
+
+                    <a href="#" class="acheter">
+                        Acheter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUIT 3 -->
+
+        <div class="produit">
+
+            <div class="image-produit">
+                ⚔️
+            </div>
+
+            <div class="contenu">
+
+                <h3>Épée fantastique</h3>
+
+                <p>
+                    Modèle d'épée pour
+                    tes créations 3D.
+                </p>
+
+                <div class="bas-produit">
+
+                    <div class="prix">
+                        4 $
+                    </div>
+
+                    <a href="#" class="acheter">
+                        Acheter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUIT 4 -->
+
+        <div class="produit">
+
+            <div class="image-produit">
+                🏰
+            </div>
+
+            <div class="contenu">
+
+                <h3>Château</h3>
+
+                <p>
+                    Château médiéval
+                    en modèle 3D.
+                </p>
+
+                <div class="bas-produit">
+
+                    <div class="prix">
+                        10 $
+                    </div>
+
+                    <a href="#" class="acheter">
+                        Acheter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- À PROPOS -->
+
+<section class="info" id="apropos">
+
+    <h2>À propos</h2>
+
+    <p>
+        Bienvenue sur 3D Studio.
+        Je crée et partage des modèles 3D
+        pour les passionnés de création,
+        de jeux vidéo et d'impression 3D.
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
 <footer>
-    © 2026 - Ma boutique 3D
+
+    © 2026 3D Studio — Tous droits réservés.
+
 </footer>
+
 
 </body>
 </html>
