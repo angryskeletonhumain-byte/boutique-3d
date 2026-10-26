@@ -504,9 +504,10 @@ document.getElementById("owner-login-form").addEventListener("submit", async fun
     password: password
   });
 
-  if (error) {
-    message.textContent = "Connexion impossible : vérifie ton e-mail et ton mot de passe.";
-    return;
+ if (error) {
+  console.error("Erreur Supabase :", error);
+  message.textContent = "Erreur Supabase : " + error.message;
+  return;
   }
 
   const { data: profile, error: profileError } = await supabaseClient
