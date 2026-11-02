@@ -521,6 +521,7 @@ document.getElementById("owner-login-form").addEventListener("submit", async fun
   }
 
   message.textContent = "Connexion propriétaire réussie !";
+    document.getElementById("owner-dashboard").style.display = "block";
 });
 </script>
 <script>
@@ -532,5 +533,26 @@ const SUPABASE_URL = "https://ebboypnsqqwwbqrmxitj.supabase.co";
     SUPABASE_KEY
   );
 </script>
+    <section id="owner-dashboard" style="display:none; max-width:700px; margin:40px auto; padding:25px; background:#172033; color:white; border-radius:12px; font-family:Arial;">
+  <h2>Mon espace propriétaire</h2>
+  <p>Bienvenue dans ton atelier 3D !</p>
+
+  <h3>Ajouter un modèle 3D</h3>
+
+  <label>Nom du modèle</label>
+  <input id="model-name" type="text" placeholder="Ex : Hibou pollinisateur">
+
+  <label>Description</label>
+  <textarea id="model-description" placeholder="Décris ton modèle"></textarea>
+
+  <label>Prix</label>
+  <input id="model-price" type="number" min="0" step="0.01" placeholder="10.00">
+
+  <label>Fichier 3D</label>
+  <input id="model-file" type="file" accept=".glb,.gltf,.obj,.stl,.fbx">
+
+  <button id="add-model-button" type="button">Ajouter mon modèle</button>
+  <p id="model-message"></p>
+</section>
 </body>
 </html>
