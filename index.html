@@ -609,12 +609,69 @@ document.getElementById("add-model-button").addEventListener("click", async func
     return;
   }
 
+
+</script>
+    
+    <script>
+document.getElementById("add-model-button").addEventListener("click", async function() {
+  const message = document.getElementById("model-message");
+  const name = document.getElementById("model-name").value.trim();
+  const description = document.getElementById("model-description").value.trim();
+  const price = Number(document.getElementById("model-price").value);
+  const file = document.getElementById("model-file").files[0];
+
+  if (!name || !file || !Number.isFinite(price) || price < 0) {
+    message.textContent = "Remplis le nom, le prix et choisis un fichier.";
+    return;
+  }
+
+  message.textContent = "Envoi en cours...";
+
+  const { data: userData, error: userError } =
+    await supabaseClient.auth.getUser();
+
+  if (userError || !userData.user) {
+    message.textContent = "Tu dois être connecté.";
+    return;
+  }
+
+  const user = userData.user;
+  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+  const filePath = user.id + "/" + Date.now() + "-" + safeName;
+
+  const { error: uploadError } = await supabaseClient.storage
+    .from("cyclope tic tic")
+    .upload(filePath, file);
+
+  if (uploadError) {
+    message.textContent = "Erreur d'envoi : " + uploadError.message;
+    return;
+  }
+
+  const { error: insertError } = await supabaseClient
+    .from("models")
+    .insert({
+      name: name,
+      description: description,
+      price: price,
+      file_url: filePath,
+      owner_id: user.id
+    });
+
+  if (insertError) {
+    await supabaseClient.storage
+      .from("cyclope tic tic")
+      .remove([filePath]);
+
+    message.textContent = "Erreur d'enregistrement : " + insertError.message;
+    return;
+  }
+
   message.textContent = "Modèle ajouté avec succès !";
   document.getElementById("model-name").value = "";
   document.getElementById("model-description").value = "";
   document.getElementById("model-price").value = "";
   document.getElementById("model-file").value = "";
 });
-</script>
-</body>
+</script></body>
 </html>
