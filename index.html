@@ -582,7 +582,7 @@ document.getElementById("add-model-button").addEventListener("click", async func
   const filePath = user.id + "/" + Date.now() + "-" + safeName;
 
   const { error: uploadError } = await supabaseClient.storage
-    .from("cyclope tic tic")
+   .from("Cyclope tic tic")
     .upload(filePath, file);
 
   if (uploadError) {
@@ -602,7 +602,7 @@ document.getElementById("add-model-button").addEventListener("click", async func
 
   if (insertError) {
     await supabaseClient.storage
-      .from("cyclope tic tic")
+      .from("Cyclope tic tic")
       .remove([filePath]);
 
     message.textContent = "Erreur d'enregistrement : " + insertError.message;
@@ -640,7 +640,7 @@ document.getElementById("add-model-button").addEventListener("click", async func
   const filePath = user.id + "/" + Date.now() + "-" + safeName;
 
   const { error: uploadError } = await supabaseClient.storage
-    .from("cyclope tic tic")
+.from("Cyclope tic tic")
     .upload(filePath, file);
 
   if (uploadError) {
